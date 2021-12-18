@@ -33,6 +33,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.vliolios/themoviedb-java-kit -->
+        <dependency>
+            <groupId>com.vliolios</groupId>
+            <artifactId>themoviedb-java-kit</artifactId>
+            <version>0.1.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
