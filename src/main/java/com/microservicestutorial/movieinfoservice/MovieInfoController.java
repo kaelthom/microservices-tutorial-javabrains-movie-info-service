@@ -4,6 +4,7 @@ import com.microservicestutorial.movieinfoservice.config.DbConnectionProperties;
 import com.microservicestutorial.movieinfoservice.resources.MovieInfoResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,9 @@ public class MovieInfoController {
     private Map<String, String> mapValues;
 
     @Autowired
+    private Environment env;
+
+    @Autowired
     DbConnectionProperties dbConnectionProperties;
 
     @GetMapping("/{id}")
@@ -42,5 +46,10 @@ public class MovieInfoController {
         System.out.println("mapValues : " + mapValues);
         System.out.println("db connection settings :  " + dbConnectionProperties);
         return restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey, MovieInfoResource.class);
+    }
+
+    @GetMapping("/env")
+    public String getEnvironnement() {
+        return env.toString();
     }
 }
