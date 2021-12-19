@@ -1,5 +1,6 @@
 package com.microservicestutorial.movieinfoservice;
 
+import com.microservicestutorial.movieinfoservice.config.DbConnectionProperties;
 import com.microservicestutorial.movieinfoservice.resources.MovieInfoResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,11 +32,15 @@ public class MovieInfoController {
     @Value("#{${my-map-values-variable}}") //the # tells that this is an SpEL expression
     private Map<String, String> mapValues;
 
+    @Autowired
+    DbConnectionProperties dbConnectionProperties;
+
     @GetMapping("/{id}")
     public MovieInfoResource getMovieById(@PathVariable(value = "id") int movieId) {
         System.out.println("default value : " + defaultValue);
         System.out.println("values : " + values);
         System.out.println("mapValues : " + mapValues);
+        System.out.println("db connection settings :  " + dbConnectionProperties);
         return restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey, MovieInfoResource.class);
     }
 }
