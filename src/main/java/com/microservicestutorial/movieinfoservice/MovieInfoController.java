@@ -4,6 +4,7 @@ import com.microservicestutorial.movieinfoservice.config.DbConnectionProperties;
 import com.microservicestutorial.movieinfoservice.resources.MovieInfoResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,9 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/movie")
+// this is to tell this app to be synchronized with any updates in Spring Cloud Config Server
+// It will be updated in real time if the actuator/refresh entry point of this app is executed
+@RefreshScope
 public class MovieInfoController {
 
     @Autowired
