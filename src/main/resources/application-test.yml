@@ -1,8 +1,9 @@
-# this file is always loaded. This is the default profile, it's always active
+#This file is activated when the profile test is active
+#it overrides the default application.yml values
 db:
     login: my-login
     password: my-password
-    url: my-db:login:password@port:my-db
+    url: my-test-db:login:password@portTest:my-db
 management:
     endpoints:
         web:
@@ -17,5 +18,3 @@ server:
 spring:
     application:
         name: Movie-Info-API
-    profiles:
-        active: test
