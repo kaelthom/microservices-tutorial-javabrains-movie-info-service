@@ -1,0 +1,18 @@
+db:
+    login: my-login
+    password: my-password
+    url: my-db:login:password@port:my-db
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+movie-db:
+    api-key: cc00f48e03cb6a988c162313366287c9
+my-list-values-variable: One,Two,Three
+my-map-values-variable: '{1:''One'',2:''Two'',3:''Three''}'
+server:
+    port: 8081
+spring:
+    application:
+        name: Movie-Info-API
