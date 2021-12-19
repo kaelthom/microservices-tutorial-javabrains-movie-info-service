@@ -21,10 +21,6 @@ public class MovieInfoController {
 
     @GetMapping("/{id}")
     public MovieInfoResource getMovieById(@PathVariable(value = "id") int movieId) {
-
-        String url = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey;
-        System.out.println("url : " + url);
-        MovieInfoResource movieInfoResource = restTemplate.getForObject(url, MovieInfoResource.class);
-        return movieInfoResource;
+        return restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey, MovieInfoResource.class);
     }
 }
