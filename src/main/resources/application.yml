@@ -16,6 +16,7 @@ server:
     port: 8081
 spring:
     application:
-        name: Movie-Info-API
-    profiles:
-        active: test
+        name: movie-info-service # the name here must be the name of the config yml file in the config server
+
+    config:
+        import: "configserver:http://localhost:8080"
